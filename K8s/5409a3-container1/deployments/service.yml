@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: container1
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 7777
+      protocol: TCP
+  selector:
+    app: container1
+    role: container1

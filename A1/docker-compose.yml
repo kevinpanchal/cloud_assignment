@@ -1,0 +1,21 @@
+services:
+  calculate:
+    image: kevinpanchal/calculate
+    volumes:
+      - ./:/etc
+    ports: 
+      - "6000:6000"
+    networks:
+      - kevin
+  sum:
+    image: kevinpanchal/sum
+    volumes:
+      - ./:/etc
+    ports:
+      - "6001:6001"
+    networks:
+      - kevin
+
+networks:
+  kevin:
+    driver: bridge

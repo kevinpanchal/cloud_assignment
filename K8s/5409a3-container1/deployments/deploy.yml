@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: 5409a3-container1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: container1
+      role: container1
+  template:
+    metadata:
+      name: container1
+      labels:
+        app: container1
+        role: container1
+    spec:
+      containers:
+        - name: container1
+          image: gcr.io/cloud-project-389920/container1-image:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "50Mi"
+              cpu: "20m"
+          ports:
+            - name: container1
+              containerPort: 7777
+          env:
+            - name: PORT
+              value: "7777"
+          volumeMounts:
+            - name: data-volume
+              mountPath: /etc
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: pvc1

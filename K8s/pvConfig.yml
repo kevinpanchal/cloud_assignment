@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc1
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: filestore-csi
+  resources:
+    requests:
+      storage: 1Ti
